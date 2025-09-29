@@ -28,12 +28,16 @@ public class AuthController {
 		return ResponseEntity.ok(list);
 	}
 	
-	@PostMapping
-	public ResponseEntity<Void> insert(@RequestBody MemberDTO dto){
+	//인서트 , 로그인
+	@PostMapping("/login")
+	public ResponseEntity<Integer> insert(@RequestBody MemberDTO dto){
 		System.out.println(dto.getId() + ":" + dto.getPw());
-		//memberService.insert(dto);
-		return ResponseEntity.ok().build();
+		
+		int result = memberService.loginCheck(dto);
+		return ResponseEntity.ok(result);
 	}
+	
+
 	
 
 	
