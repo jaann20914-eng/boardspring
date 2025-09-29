@@ -30,5 +30,9 @@ public class MemberDAO {
 	    return mybatis.update("Member.updateMember", dto);
 	}
 	
+	//loginCheck
+	public int loginCheck (MemberDTO dto) {
+		return mybatis.selectOne("Member.loginCheck", dto);
+	}
 
 }
