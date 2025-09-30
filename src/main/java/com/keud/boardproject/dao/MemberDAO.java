@@ -18,14 +18,17 @@ public class MemberDAO {
 		// bao.seletAll
 	}
 	
-	public int insert(MemberDTO dto) {
+	//회원가입 : insert
+	public int insertMember(MemberDTO dto) {
 		return mybatis.insert("Member.insert", dto);
 	}
 	
+	//아이디로 삭제
 	public int deleteId(int id) {
 		return mybatis.delete("Member.deleteId", id);
 	}
 	
+	//업데이트
 	public int updateMember(MemberDTO dto) {
 	    return mybatis.update("Member.updateMember", dto);
 	}

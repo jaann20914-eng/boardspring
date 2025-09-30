@@ -19,9 +19,9 @@ public class MemberService {
 	public List<MemberDTO> seletAll(){
 		return memberDao.seletAll();
 	}
-	//인서트
-	public int insert(MemberDTO dto) {
-		return memberDao.insert(dto);
+	//회원가입 : insert
+	public int insertMember(MemberDTO dto) {
+		return memberDao.insertMember(dto);
 	}
 	//삭제
 	public int deleteId(int id) {
@@ -35,5 +35,6 @@ public class MemberService {
 	public int loginCheck (MemberDTO dto) {
 		return memberDao.loginCheck(dto);
 	}
+	
 
 }
