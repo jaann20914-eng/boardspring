@@ -23,8 +23,8 @@ public class MemberDAO {
 		return mybatis.insert("Member.insert", dto);
 	}
 	
-	//아이디로 삭제
-	public int deleteId(int id) {
+	//회원탈퇴
+	public int deleteId(String id) {
 		return mybatis.delete("Member.deleteId", id);
 	}
 	

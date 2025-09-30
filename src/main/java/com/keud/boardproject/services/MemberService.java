@@ -24,7 +24,7 @@ public class MemberService {
 		return memberDao.insertMember(dto);
 	}
 	//삭제
-	public int deleteId(int id) {
+	public int deleteId(String id) {
 		return memberDao.deleteId(id);
 	}
 	//업데이트

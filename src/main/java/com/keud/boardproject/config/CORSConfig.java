@@ -6,7 +6,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 public class CORSConfig implements WebMvcConfigurer{
-	
+
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
 		//나중에는 보안 관련 설정 더 필요
@@ -17,4 +17,5 @@ public class CORSConfig implements WebMvcConfigurer{
 				.allowCredentials(true); //크로스 오리진에서 들어오는 세션 키값도 허가하겠다
 	}
 	
+
 }
