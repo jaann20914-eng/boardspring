@@ -11,7 +11,9 @@
     SELECT COUNT(*) FROM members WHERE id = #{id} AND pw = #{pw}
 </select>
 
-
+<delete id="deleteId">
+	delete from pw=#{pw}, name=#{name},email=#{email} where id=#{id}
+</delete>
 
    
 </mapper>

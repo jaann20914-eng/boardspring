@@ -22,7 +22,7 @@ public class MemberDAO {
 		return mybatis.insert("Member.insert", dto);
 	}
 	
-	public int deleteId(int id) {
+	public int deleteId(String id) {
 		return mybatis.delete("Member.deleteId", id);
 	}
 	
