@@ -37,5 +37,14 @@ public class MemberDAO {
 	public int loginCheck (MemberDTO dto) {
 		return mybatis.selectOne("Member.loginCheck", dto);
 	}
-
+	
+	//아이디로 마이페이지 꺼내오기
+	public MemberDTO getInforById(String id) {
+		return mybatis.selectOne("Member.getInforById", id);
+	}
+	
+	//아이디로 마이페이지 수정하기
+	public int updateInforById(MemberDTO dto) {
+		return mybatis.selectOne("Member.updateInforById", dto);
+	}
 }

@@ -11,11 +11,18 @@
     SELECT COUNT(*) FROM members WHERE id = #{id} AND pw = #{pw}
 </select>
 
+<!--아이디로 DTO 꺼내오기-->   
+<select id="getInforById" parameterType="com.keud.boardproject.dto.MemberDTO" resultType="com.keud.boardproject.dto.MemberDTO">
+    SELECT * FROM members WHERE id = #{id}
+</select>
+
 
 <delete id="deleteId">
 	delete from members where id = #{id}
 </delete>
 
+<update id="updateInforById">
+	update members set name = #{name}, email =#{email} where id = #{id}
+</update>
 
-   
 </mapper>

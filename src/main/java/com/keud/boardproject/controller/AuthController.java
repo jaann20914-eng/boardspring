@@ -1,7 +1,6 @@
 package com.keud.boardproject.controller;
 
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,8 +10,10 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.keud.boardproject.dto.MemberDTO;
@@ -27,12 +28,11 @@ public class AuthController {
     @Autowired
     private MemberService memberService;
 
-    @GetMapping
-    public ResponseEntity<List<MemberDTO>> getAll() {
-        System.out.println("전송");
-        List<MemberDTO> list = memberService.seletAll();
-        return ResponseEntity.ok(list);
-    }
+	/*
+	 * @GetMapping public ResponseEntity<List<MemberDTO>> getAll() {
+	 * System.out.println("전송"); List<MemberDTO> list = memberService.seletAll();
+	 * return ResponseEntity.ok(list); }
+	 */
     
     
     //로그인
@@ -80,4 +80,22 @@ public class AuthController {
         session.invalidate();
         return ResponseEntity.ok().build();
     }
+    
+    
+    //마이페이지 불러오기 (디티오로)
+    @GetMapping
+    public ResponseEntity<MemberDTO> getInforById(HttpSession session){
+    	String loginId =(String)session.getAttribute("loginId");
+    	MemberDTO target =memberService.getInforById(loginId);
+    	return ResponseEntity.ok(target);
+    }
+    
+    //마이페이지 업데이트용 가져오기 (디티오로)
+    @PutMapping
+    public ResponseEntity<Void> updateInforById (@RequestParam String id, @RequestBody MemberDTO dto){
+    	memberService.updateInforById(dto);
+    	return ResponseEntity.ok().build();
+    }
+    
+    
 }

@@ -35,6 +35,13 @@ public class MemberService {
 	public int loginCheck (MemberDTO dto) {
 		return memberDao.loginCheck(dto);
 	}
-	
+	//아이디로 정보 가져오기: 마이페이지
+	public MemberDTO getInforById(String id){
+		return memberDao.getInforById(id);
+	}
+	//아이디로 정보 수정하기 :마이페이지
+	public int updateInforById(MemberDTO dto) {
+		return memberDao.updateInforById(dto);
+	}
 
 }
