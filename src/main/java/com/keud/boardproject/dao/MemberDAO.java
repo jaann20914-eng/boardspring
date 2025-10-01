@@ -45,6 +45,6 @@ public class MemberDAO {
 	
 	//아이디로 마이페이지 수정하기
 	public int updateInforById(MemberDTO dto) {
-		return mybatis.selectOne("Member.updateInforById", dto);
+		return mybatis.update("Member.updateInforById", dto);
 	}
 }

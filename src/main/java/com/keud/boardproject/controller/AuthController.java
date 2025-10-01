@@ -84,15 +84,17 @@ public class AuthController {
     
     //마이페이지 불러오기 (디티오로)
     @GetMapping
-    public ResponseEntity<MemberDTO> getInforById(HttpSession session){
-    	String loginId =(String)session.getAttribute("loginId");
-    	MemberDTO target =memberService.getInforById(loginId);
+    public ResponseEntity<MemberDTO> getInforById(@RequestParam String id){
+//    	String loginId =(String)session.getAttribute("loginId");
+    	System.out.println("마이페이지에서 아이디 받는지 확인"+id);
+    	MemberDTO target =memberService.getInforById(id);
     	return ResponseEntity.ok(target);
     }
     
     //마이페이지 업데이트용 가져오기 (디티오로)
     @PutMapping
     public ResponseEntity<Void> updateInforById (@RequestParam String id, @RequestBody MemberDTO dto){
+    	System.out.println(dto.getId());
     	memberService.updateInforById(dto);
     	return ResponseEntity.ok().build();
     }
