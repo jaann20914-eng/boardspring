@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.keud.boardproject.dto.MemberDTO;
+import com.keud.boardproject.security.JwtUtil;
 import com.keud.boardproject.services.MemberService;
 
 import jakarta.servlet.http.HttpSession;
@@ -33,24 +34,30 @@ public class AuthController {
 	 * System.out.println("전송"); List<MemberDTO> list = memberService.seletAll();
 	 * return ResponseEntity.ok(list); }
 	 */
-    
+	@Autowired
+	private JwtUtil jwt;
     
     //로그인
-    @PostMapping("/login")
-    public ResponseEntity<Map<String, Object>> insert(@RequestBody MemberDTO dto, HttpSession session) {
-        System.out.println(dto.getId() + ":" + dto.getPw());
+	@PostMapping("/login")
+	public ResponseEntity<Map<String, Object>> insert(@RequestBody MemberDTO dto) {
+	    System.out.println(dto.getId() + ":" + dto.getPw());
 
-        int result = memberService.loginCheck(dto);
+	    int result = memberService.loginCheck(dto);
 
-        if (result > 0) {
-            session.setAttribute("loginId", dto.getId());
+	    if (result > 0) {
+	        String token = jwt.createToken(dto.getId());
 
-            Map<String, Object> loginID = new HashMap<>();
-            loginID.put("loginId", dto.getId());
-            return ResponseEntity.ok(loginID);
-        }
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
-    }
+	        Map<String, Object> response = new HashMap<>();
+	        response.put("token", token);
+	        response.put("id", dto.getId()); // 필요 시 다른 정보도 추가 가능
+
+	        return ResponseEntity.ok(response);
+	    }
+
+	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+	}
+
+
     
     
     
@@ -75,11 +82,11 @@ public class AuthController {
     
     
     //로그아웃
-    @PostMapping("/logout")
-    public ResponseEntity<Void> logout(HttpSession session) {
-        session.invalidate();
-        return ResponseEntity.ok().build();
-    }
+//    @PostMapping("/logout")
+//    public ResponseEntity<Void> logout(HttpSession session) {
+//        session.invalidate();
+//        return ResponseEntity.ok().build();
+//    }
     
     
     //마이페이지 불러오기 (디티오로)
