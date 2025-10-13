@@ -10,6 +10,28 @@ import com.keud.boardproject.dto.BoardDTO;
 
 @Service
 public class BoardService {
+<<<<<<< HEAD
+	
+	@Autowired
+	private BoardDAO boardDao;
+	
+	// 전체 리스트 
+	public List<BoardDTO> selectAll(){
+		return boardDao.selectAll();
+	}
+	
+	
+	//검색용
+	public List<BoardDTO> searchBuTitle(String title){
+		return boardDao.searchBuTitle(title);
+	}
+	
+	// 등록
+	public int Boardinsert(BoardDTO dto) {
+		return boardDao.Boardinsert(dto);
+	}
+
+=======
 
 	@Autowired
     private BoardDAO boardDao;
@@ -34,4 +56,5 @@ public class BoardService {
 		return  boardDao.delete(seq);
 	}
 	
+>>>>>>> 56883e14a5733fdb353b11adcd1c39ec11dadf84
 }

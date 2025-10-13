@@ -3,6 +3,21 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+<<<<<<< HEAD
+<mapper namespace="Board">
+
+	<select id="selectAll" resultType="com.keud.boardproject.dto.BoardDTO">
+		select * from boards
+	</select>
+	
+	<select id="searchBuTitle" resultType="com.keud.boardproject.dto.BoardDTO">
+		select * from baords where title like '%'||#{title}||'%'
+	</select>
+	
+	<insert id="Boardinsert">
+		insert into boards values(boards_seq.nextval,#{writer},#{title},#{contents},#{writer_date}, #{view_count});
+	</insert>
+=======
   
 <mapper namespace="Board">
 
@@ -25,5 +40,6 @@
 
 
 
+>>>>>>> 56883e14a5733fdb353b11adcd1c39ec11dadf84
 
 </mapper>

@@ -10,6 +10,25 @@ import com.keud.boardproject.dto.BoardDTO;
 
 @Repository
 public class BoardDAO {
+<<<<<<< HEAD
+
+	@Autowired
+	private SqlSession mybatis;
+	
+	// 게시물 리스트 
+	public List<BoardDTO> selectAll(){
+		return mybatis.selectList("Board.selectAll");
+	}
+	
+	// 제목 검색
+	public List<BoardDTO> searchBuTitle(String title){
+		return mybatis.selectList("Board.searchBuTitle", title);
+	}
+	
+	// 등록
+	public int Boardinsert(BoardDTO dto) {
+		return mybatis.insert("Board.Boardinsert", dto);
+=======
 	@Autowired
 	public SqlSession mybatis;
 	
@@ -31,5 +50,6 @@ public class BoardDAO {
 	//삭제
 	public int delete (int seq) {
 		return mybatis.delete("Board.delete", seq);
+>>>>>>> 56883e14a5733fdb353b11adcd1c39ec11dadf84
 	}
 }
