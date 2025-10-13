@@ -41,7 +41,7 @@ public class AuthController {
         System.out.println(dto.getId() + ":" + dto.getPw());
 
         int result = memberService.loginCheck(dto);
-
+        System.out.println("결과"+result);
         if (result > 0) {
             session.setAttribute("loginId", dto.getId());
 
