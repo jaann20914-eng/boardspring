@@ -3,6 +3,7 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
   
+<<<<<<< HEAD
 <mapper namespace="Board">
 
 	<select id="selectAll" resultType="com.keud.boardproject.dto.BoardDTO">
@@ -16,5 +17,29 @@
 	<insert id="Boardinsert">
 		insert into boards values(boards_seq.nextval,#{writer},#{title},#{contents},#{writer_date}, #{view_count});
 	</insert>
+=======
+  
+<mapper namespace="Board">
+
+<!--로그인 가능 체크-->   
+<select id="getAll" resultType="com.keud.boardproject.dto.BoardDTO">
+    select * from board order by seq desc
+</select>
+
+<select id="getOne" resultType="com.keud.boardproject.dto.BoardDTO">
+    select * from board where seq=#{seq}
+</select>
+
+<insert id="insert" >
+    insert into board (seq, title, content, writer, writedate) values (board_seq.nextval, #{title}, #{content}, #{writer}, sysdate)
+</insert>
+
+<insert id="delete" >
+    delete from board where seq=#{seq}
+</insert>
+
+
+
+>>>>>>> 56883e14a5733fdb353b11adcd1c39ec11dadf84
 
 </mapper>

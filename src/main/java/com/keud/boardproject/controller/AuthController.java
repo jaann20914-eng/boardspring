@@ -42,6 +42,7 @@ public class AuthController {
 	public ResponseEntity<Map<String, Object>> insert(@RequestBody MemberDTO dto) {
 	    System.out.println(dto.getId() + ":" + dto.getPw());
 
+<<<<<<< HEAD
 	    int result = memberService.loginCheck(dto);
 
 	    if (result > 0) {
@@ -57,6 +58,12 @@ public class AuthController {
 	    return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
 	}
 
+=======
+        int result = memberService.loginCheck(dto);
+        System.out.println("결과"+result);
+        if (result > 0) {
+            session.setAttribute("loginId", dto.getId());
+>>>>>>> 56883e14a5733fdb353b11adcd1c39ec11dadf84
 
     
     
